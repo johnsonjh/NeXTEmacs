@@ -1,0 +1,1322 @@
+Info file: gnus,    -*-Text-*-
+produced by texinfo-format-buffer
+from file: gnus.texinfo
+
+
+
+This file documents GNUS, the GNU Emacs newsreader.
+
+Copyright (C) 1989 Fujitsu Laboratories LTD.
+Copyright (C) 1989 Masanobu UMEDA.
+
+Permission is granted to make and distribute verbatim copies of this
+manual provided the copyright notice and this permission notice are
+preserved on all copies.
+
+Permission is granted to copy and distribute modified versions of this
+manual under the conditions for verbatim copying, provided also that the
+sections entitled "Distribution" and "GNUS General Public License"
+are included exactly as in the original, and provided that the entire
+resulting derived work is distributed under the terms of a permission
+notice identical to this one.
+
+Permission is granted to copy and distribute translations of this manual
+into another language, under the above conditions for modified versions,
+except that the sections entitled "Distribution" and "GNUS General
+Public License" may be included in a translation approved by the author
+instead of in the original English.
+
+
+
+File: gnus  Node: Top, Up: (DIR), Next: Introduction
+
+The GNUS Newsreader
+*******************
+
+  GNUS is a network newsreader for GNU Emacs.  This Info file describes
+how to read and write articles of USENET using GNUS and how to customize
+GNUS.
+
+* Menu:
+
+* Distribution::        How to get the latest GNUS distribution.
+* License::             Permission to redistribute GNUS on certain terms.
+* Acknowledgments::     I would like to thank many people who have helped me.
+
+* Introduction::        An introduction to GNUS.
+* Installation::        How to install GNUS.
+* Starting up::         How to get started GNUS.
+* Buffers of GNUS::     Buffers used by GNUS.
+* Newsgroup Commands::  Browsing through newsgroups.
+* Subject Commands::    Browsing through headers and messages.
+* Article Commands::    Commands for an article.
+* KILL File::           How to use KILL files.
+
+* Customization::       How to customize GNUS.
+* Problems::            How to solve the problems with GNUS.
+* Reporting Bugs::      Introduce mailing lists and USENET newsgroup for
+                        GNUS lovers, and give an guide to report bugs.
+
+* Key Index::           An item for each standard GNUS key sequence.
+* Command Index::       An item for each command name.
+* Variable Index::      An item for each documented variable.
+* Program Index::       An item for each program.
+* Concept Index::       An item for each concept.
+
+
+File: gnus  Node: Distribution, Prev: Top, Up: Top, Next: License
+
+Distribution
+************
+
+GNUS is "free"; this means that everyone is free to use it and free
+to redistribute it on a free basis.  GNUS is not in the public domain;
+it is copyrighted and there are restrictions on its distribution, but
+these restrictions are designed to permit everything that a good
+cooperating citizen would want to do.  What is not allowed is to try to
+prevent others from further sharing any version of GNUS that they might
+get from you.  The precise conditions appears following this section.
+
+The easiest way to get a copy of GNUS is from someone else who has it.
+You need not ask for permission to do so, or tell any one else; just
+copy it.
+
+If you have access to the Internet, you can get the latest version of
+GNUS from tut.cis.ohio-state.edu [128.146.8.60] using anonymous ftp.
+You can also get it from osu-cis using anonymous uucp.
+
+You may also receive GNUS when you buy a computer.  Computer
+manufacturers are free to distribute copies on the same terms that apply
+to everyone else.  These terms require them to give you the full
+sources, including whatever changes they may have made, and to permit
+you to redistribute the GNUS received from them under the usual terms of
+the General Public License.  In other words, the program must be free
+for you when you get it, not just free for the manufacturer.
+
+If you cannot get a copy in any of those ways, you can order one from
+the author using electronic mail.  For further information, write to:
+
+     umerin@flab.flab.Fujitsu.CO.JP, or
+     umerin%flab.flab.Fujitsu.JUNET@uunet.uu.NET
+
+If you cannot reach the author using these addresses, try the following
+mailing list:
+
+     info-gnus-english@tut.cis.ohio-state.edu
+
+The list is intended to exchange useful information about GNUS, such as
+bug reports, useful hooks, and extensions.  Feel free to ask about the
+nearest machine that has GNUS installed.  Subscription request of this
+list should be sent to:
+
+     info-gnus-english-request@tut.cis.ohio-state.edu
+
+*Note Reporting Bugs::, for more information on the mailing list.
+
+
+File: gnus  Node: License, Prev: Distribution, Up: Top, Next: Acknowledgments
+
+GNUS General Public License
+***************************
+                        (Clarified 13 Jan 1989)
+
+  The license agreements of most software companies keep you at the
+mercy of those companies.  By contrast, our general public license is
+intended to give everyone the right to share GNUS.  To make sure that
+you get the rights we want you to have, we need to make restrictions
+that forbid anyone to deny you these rights or to ask you to surrender
+the rights.  Hence this license agreement.
+
+  Specifically, we want to make sure that you have the right to give
+away copies of GNUS, that you receive source code or else can get it if
+you want it, that you can change GNUS or use pieces of it in new free
+programs, and that you know you can do these things.
+
+  To make sure that everyone has such rights, we have to forbid you to
+deprive anyone else of these rights.  For example, if you distribute
+copies of GNUS, you must give the recipients all the rights that you
+have.  You must make sure that they, too, receive or can get the source
+code.  And you must tell them their rights.
+
+  Also, for our own protection, we must make certain that everyone finds
+out that there is no warranty for GNUS.  If GNUS is modified by someone
+else and passed on, we want its recipients to know that what they have
+is not what we distributed, so that any problems introduced by others
+will not reflect on our reputation.
+
+  Therefore I (Masanobu Umeda) use the following terms, which are
+written for GNU Emacs by Richard Stallman and the Free Software
+Foundation, Inc.  They say what you must do to be allowed to distribute
+or change GNU Emacs.  You can know your right to distribute or change
+GNUS by replacing any occurrences of GNU Emacs with GNUS.  Please apply
+the same policies to GNUS as GNU Emacs.
+
+
+Copying Policies
+================
+
+  1. You may copy and distribute verbatim copies of GNU Emacs source code as
+     you receive it, in any medium, provided that you conspicuously and
+     appropriately publish on each file a valid copyright notice "Copyright
+     (C) 1988 Free Software Foundation, Inc." (or with whatever
+     year is appropriate); keep intact the notices on all files that refer to
+     this License Agreement and to the absence of any warranty; and give any
+     other recipients of the GNU Emacs program a copy of this License
+     Agreement along with the program.  You may charge a distribution fee for
+     the physical act of transferring a copy.
+
+  2. You may modify your copy or copies of GNU Emacs source code or
+     any portion of it, and copy and distribute such modifications under
+     the terms of Paragraph 1 above, provided that you also do the following:
+
+        * cause the modified files to carry prominent notices stating
+          who last changed such files and the date of any change; and
+
+        * cause the whole of any work that you distribute or publish, that
+          in whole or in part contains or is a derivative of GNU Emacs or any
+          part thereof, to be licensed at no charge to all third parties on
+          terms identical to those contained in this License Agreement
+          (except that you may choose to grant more extensive warranty
+          protection to some or all third parties, at your option).
+
+        * if the modified program serves as a text editor, cause it, when
+          started running in the simplest and usual way, to print an
+          announcement including a valid copyright notice "Copyright
+          (C) 1988 Free Software Foundation, Inc." (or with the
+          year that is appropriate), saying that there is no warranty (or
+          else, saying that you provide a warranty) and that users may
+          redistribute the program under these conditions, and telling the
+          user how to view a copy of this License Agreement.
+
+        * You may charge a distribution fee for the physical act of
+          transferring a copy, and you may at your option offer warranty
+          protection in exchange for a fee.
+
+     Mere aggregation of another unrelated program with this program (or its
+     derivative) on a volume of a storage or distribution medium does not bring
+     the other program under the scope of these terms.
+
+  3. You may copy and distribute GNU Emacs (or a portion or derivative of it,
+     under Paragraph 2) in object code or executable form under the terms
+     of Paragraphs 1 and 2 above provided that you also do one of the
+     following:
+
+        * accompany it with the complete corresponding machine-readable
+          source code, which must be distributed under the terms of
+          Paragraphs 1 and 2 above; or,
+
+        * accompany it with a written offer, valid for at least three
+          years, to give any third party free (except for a nominal
+          shipping charge) a complete machine-readable copy of the
+          corresponding source code, to be distributed under the terms of
+          Paragraphs 1 and 2 above; or,
+
+        * accompany it with the information you received as to where the
+          corresponding source code may be obtained.  (This alternative is
+          allowed only for noncommercial distribution and only if you
+          received the program in object code or executable form alone.)
+
+     For an executable file, complete source code means all the source code
+     for all modules it contains; but, as a special exception, it need not
+     include source code for modules which are standard libraries that
+     accompany the operating system on which the executable file runs.
+
+  4. You may not copy, sublicense, distribute or transfer GNU Emacs except
+     as expressly provided under this License Agreement.  Any attempt
+     otherwise to copy, sublicense, distribute or transfer GNU Emacs is
+     void and your rights to use GNU Emacs under this License agreement
+     shall be automatically terminated.  However, parties who have received
+     computer software programs from you with this License Agreement will
+     not have their licenses terminated so long as such parties remain in
+     full compliance.
+
+  5. If you wish to incorporate parts of GNU Emacs into other free programs
+     whose distribution conditions are different, write to the Free Software
+     Foundation.  We have not yet worked out a simple rule that can be stated
+     here, but we will often permit this.  We will be guided by the two goals of
+     preserving the free status of all derivatives of our free software and of
+     promoting the sharing and reuse of software.
+
+Your comments and suggestions about our licensing policies and our
+software are welcome!  Please contact the Free Software Foundation, Inc.,
+675 Mass Ave, Cambridge, MA 02139.
+
+
+NO WARRANTY
+===========
+
+  BECAUSE GNUS IS LICENSED FREE OF CHARGE, WE PROVIDE ABSOLUTELY NO
+WARRANTY, TO THE EXTENT PERMITTED BY APPLICABLE STATE LAW.  EXCEPT WHEN
+OTHERWISE STATED IN WRITING, FUJITSU LABORATORIES LTD., MASANOBU UMEDA
+AND/OR OTHER PARTIES PROVIDE GNUS "AS IS" WITHOUT WARRANTY OF ANY
+KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+PURPOSE.  THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE
+PROGRAM IS WITH YOU.  SHOULD THE GNUS PROGRAM PROVE DEFECTIVE, YOU
+ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.
+
+ IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW WILL FUJITSU LABORATORIES
+LTD., MASANOBU UMEDA, AND/OR ANY OTHER PARTY WHO MAY MODIFY AND
+REDISTRIBUTE GNUS AS PERMITTED ABOVE, BE LIABLE TO YOU FOR DAMAGES,
+INCLUDING ANY LOST PROFITS, LOST MONIES, OR OTHER SPECIAL, INCIDENTAL OR
+CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE
+(INCLUDING BUT NOT LIMITED TO LOSS OF DATA OR DATA BEING RENDERED
+INACCURATE OR LOSSES SUSTAINED BY THIRD PARTIES OR A FAILURE OF THE
+PROGRAM TO OPERATE WITH PROGRAMS NOT DISTRIBUTED BY MASANOBU UMEDA) THE
+PROGRAM, EVEN IF YOU HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH
+DAMAGES, OR FOR ANY CLAIM BY ANY OTHER PARTY.
+
+
+File: gnus  Node: Acknowledgments, Prev: License, Up: Top, Next: Introduction
+
+Acknowledgments
+***************
+
+  The author would like to thank all those who have helped design and
+develop GNUS, and who tested non stable codes at their own risk.
+
+  Haruo Yokota, Hiroyuki Yoshida, and Kohji Akiyama have contributed
+many valuable suggestions in the early stages of the development of
+GNUS.  Nobuyuki Hiraoka, Tsuneo Nakata, and Mark Feldman have patiently
+tested non stable codes and have contributed valuable comments.  Mark
+Feldman has also helped with proofreading.  Mike Khaw, Kouich Kumon, and
+Mitsuhiro Kishimoto have helped contribute the name GNUS.  Itaru
+Ichikawa has helped implement the caesar rotations for Japanese
+characters.  Yasunari Itoh and Akio Shibata have made this software
+available on SX/A Emacs and some old versions of GNU Emacs.  Leonard H.
+Tower Jr. and Bob Sutterfield and Karl Kleinpaste have helped create
+mailing lists for GNUS users.  Bob Sutterfield has also been managing the
+info-gnus-english mailing list.
+
+  The author would also like to thank many other GNUS users who have
+sent comments, suggestions, and bug fixes.  Thanks also go to Richard
+Stallman and the Free Software Foundation for their good work.
+
+
+File: gnus  Node: Introduction, Prev: Top, Up: Top, Next: Installation
+
+Introduction
+************
+
+  GNUS is a program for reading and writing network news of USENET using
+GNU Emacs.  This manual documents the use and simple customization of
+the GNUS.
+
+  Unlike other conventional newsreaders such as rn which was (:-) the
+most popular newsreader in the world, GNUS runs inside GNU Emacs editor
+as a subsystem.  This means that there is no need to invoke editors each
+time when composing articles or mail.  Reading and writing of articles
+can be done in the same Emacs environment you usually work in.
+
+  Like rrn, a remote version of rn, GNUS can use computer networks for
+retrieving articles.  This means that there is no need to have a local
+copy of news spool, to mount a remote file system over the network, or
+to run Emacs on a remote machine.  Its great advantage is to balance
+loads and exploit resources of the entire computer system in a
+distributed environment.  The protocol used by GNUS is "NNTP", the
+Network News Transfer Protocol defined by RFC977.
+
+  Unlike rrn, GNUS can talk to many NNTP servers easily.  The only thing
+you have to do is to create startup files for each NNTP server.
+
+  Like other libraries of GNU Emacs, GNUS is completely written in Emacs
+lisp.  This means that GNUS is highly extensible and customizable just
+like GNU Emacs.  It is possible to change the behavior of GNUS and
+extend its functions by using variables and hooks.
+
+  GNUS is pronounced *"NUZ"*.  Never call it *"ghu-NUZ"* nor
+*"ghu-NAS"*.
+
+  This manual is currently in progress and thus is incomplete.  Your
+suggestions, bug fixes, and contributions are welcome.
+
+
+File: gnus  Node: Installation, Prev: Introduction, Up: Top, Next: Starting up
+
+Installing GNUS
+***************
+
+  Installation of GNUS and some initializations of your computing
+environment are described in this chapter.  Please read the following
+sections carefully before getting started with GNUS.
+
+* Menu:
+
+* Files of GNUS::       How many files of GNUS are there?
+* Compilation::         How to byte-compile lisp sources.
+* Autoloading::         How to define autoload entries.
+* Environment::         How to define your environment.
+* Texinfo Manual::      How to install an Info file and print the manual.
+
+
+File: gnus  Node: Files of GNUS, Prev: Installation, Up: Installation, Next: Compilation
+
+Files of GNUS
+=============
+
+  Unpacking the shar files will produce the following files.  They are
+Emacs lisp sources, a C source, and a Texinfo manual of GNUS.
+
+`gnus.el'
+     Main part of GNUS newsreader.
+
+`nntp.el'
+     NNTP package.
+
+`nnspool.el'
+     Patches to `nntp.el' for spool access.
+
+`mhspool.el'
+     Patches to `nnspool.el' for private directory access.
+
+`tcp.el'
+     Patches to old GNU Emacs which does not have a function
+     `open-network-stream'.
+
+`tcp.c'
+     C program for external TCP/IP implementation.  This is used with
+     `tcp.el'.
+
+`gnus.texinfo'
+     Texinfo manual of GNUS.
+
+
+File: gnus  Node: Compilation, Prev: Files of GNUS, Up: Installation, Next: Autoloading
+
+Byte-Compilation
+================
+
+  Move the lisp files to the appropriate directory in the search path
+defined by the variable `load-path'.  Before actually byte-compiling the
+lisp files, make sure there are no byte-compiled files of older versions
+of GNUS in that directory.  Remove or rename such files as the
+byte-compiler may be got confused with old macro definitions.
+
+  The C file `tcp.c' should be compiled with a C compiler and installed
+in a directory in the search path defined by the variable `exec-path',
+if this is required.
+
+  Byte-compile lisp files in the following order according to your
+computing environment:
+
+  1. Byte-compile `nntp.el' and `gnus.el' in this order.
+
+  2. Byte-compile `nnspool.el' if you want to use a local news spool of
+     your machine instead of NNTP (*Note Local News Spool::).
+
+  3. Byte-compile `mhspool.el' if you want to read articles or mail in
+     your private directory using GNUS (*Note Private Directory::).
+
+  4. Compile and install `tcp.el' and `tcp.c' if TCP/IP stream is not
+     supported by Emacs but is supported by your operating system.
+
+  `tcp.el' defines the function `open-network-stream', and `tcp.c' is an
+emulation program of the stream which is called from that function.  If
+you modified `tcp.c' for your system, please send the author the diffs.
+Some of them will be included in the future releases of GNUS.
+
+
+File: gnus  Node: Autoloading, Prev: Compilation, Up: Installation, Next: Environment
+
+Autoloading
+===========
+
+  It is useful to define autoload entries in `.emacs', `site-init.el' or
+`default.el' as follows:
+
+     (autoload 'gnus "gnus" "Read network news." t)
+     (autoload 'gnus-post-news "gnus" "Post news." t)
+
+
+File: gnus  Node: Environment, Prev: Autoloading, Up: Installation, Next: Texinfo Manual
+
+Environment
+===========
+
+  The NNTP server and its service name, your domain and organization,
+and other important definitions of your computing environment are
+described in this section.  Since these definitions depend heavily on
+your environment, you'd better be familiar with the operating system you
+are using and an abstract of USENET.
+
+* Menu:
+
+* Server:  NNTP Server.         How to define NNTP server.
+* Service: NNTP Service.        How to define NNTP service.
+* Domain::                      How to define your domain and organization.
+* GENERICFROM::                 How to use GENERICFROM feature.
+* GENERICPATH::                 How to use GENERICPATH feature.
+* Startup File::                About the startup files of GNUS.
+
+
+File: gnus  Node: NNTP Server, Prev: Environment, Up: Environment, Next: NNTP Service
+
+NNTP Server
+-----------
+
+  The variable `gnus-nntp-server' specifies the default NNTP server.  To
+define the server `flab', put the following codes in `.emacs',
+`site-init.el' or `default.el':
+
+     (setq gnus-nntp-server "flab")
+
+  The variable `gnus-nntp-server' is initialized from the `NNTPSERVER'
+environment variable.  To define the server using the `NNTPSERVER'
+environment variable, put the following codes in `.login':
+
+     setenv NNTPSERVER "flab"
+
+  If an NNTP server is preceded by a colon such as `:Mail', the user's
+private directory `~/Mail' is used as the news spool.  This makes it
+possible to read mail stored in MH folders or articles saved by GNUS.
+*Note Private Directory::, for more information.
+
+  GNUS will ask you for the NNTP server at start up time unless it is
+defined.  Even if the default server is defined, it is possible to
+choose another server by invoking GNUS with a prefix argument like `C-u
+M-x gnus' (*Note Getting Started::).
+
+
+File: gnus  Node: NNTP Service, Prev: NNTP Server, Up: Environment, Next: Domain
+
+NNTP Service
+------------
+
+  The default service name of NNTP is `"nntp"'.  You may, however, have
+to define the service name as the number `119' as follows:
+
+     (setq gnus-nntp-service 119)
+
+  If you'd like to use a local news spool of your machine directly
+instead of NNTP, set the variable to `nil' as follows:
+
+     (setq gnus-nntp-service nil)
+
+In this case, the NNTP server must be a local host name returned by the
+function `system-name' (*Note Local News Spool::).
+
+
+File: gnus  Node: Domain, Prev: NNTP Service, Up: Environment, Next: GENERICFROM
+
+Domain and Organization
+-----------------------
+
+  "Domain" and "organization" must be defined before you post your first
+article, because they are included in all articles you post, and will be
+used for identifying who you are.
+
+  "Domain" is the domain part of your mail address excluding the local
+host name.  For example, if your mail address is
+`umerin@photon.stars.flab.Fujitsu.JUNET' and the local host name is
+`photon', your domain is `stars.flab.Fujitsu.JUNET'.  If the function
+`system-name' of your Emacs returns the full Internet name, you do not
+have to define the domain.
+
+  "Organization" is the organization you belong to.  It must be defined
+unconditionally.
+
+  To define the domain `stars.flab.Fujitsu.JUNET' and the organization
+`Fujitsu Laboratories Ltd., Kawasaki, Japan.' using lisp variables, put
+the following codes in `.emacs', `site-init.el' or `default.el'.  If you
+are a system administrator and installing GNUS for other users,
+`site-init.el' is the best place to define them because the domain and
+organization are common to all users of the system.
+
+     (setq gnus-your-domain "stars.flab.Fujitsu.JUNET")
+     (setq gnus-your-organization
+           "Fujitsu Laboratories Ltd., Kawasaki, Japan.")
+
+  The `DOMAINNAME' and `ORGANIZATION' environment variables are used
+instead if defined.  To define these variables, put the following codes
+in `.login'.
+
+     setenv DOMAINNAME   "stars.flab.Fujitsu.JUNET"
+     setenv ORGANIZATION "Fujitsu Laboratories Ltd., Kawasaki, Japan."
+
+
+File: gnus  Node: GENERICFROM, Prev: Domain, Up: Environment, Next: GENERICPATH
+
+GENERICFROM
+-----------
+
+  If the variable `gnus-use-generic-from' is non-`nil', the local host
+name of your machine will not appear in the `From:' field of article
+headers you post.  This is called the "GENERICFROM" feature in the Bnews
+system.  This may be useful if there are many workstations connected to
+each other in a local area network, and aliases service or automatic
+forwarding of mail is supported between the workstations.
+
+  To use the GENERICFROM, put the following codes in `.emacs',
+`site-init.el' or `default.el'.  If you are a system administrator and
+installing GNUS for other users, `site-init.el' is the best place to
+define it because the definition is common to all users of the system
+having the same domain and organization (*Note Domain and Organization:
+Domain.).
+
+     (setq gnus-use-generic-from t)
+
+  As a special case of the GENERICFROM feature, if the variable
+`gnus-use-generic-from' is a string, it is used as your domain instead
+of the definition of the variable `gnus-your-domain' or the environment
+variable `DOMAINNAME' (*Note Domain and Organization: Domain.).
+
+
+File: gnus  Node: GENERICPATH, Prev: GENERICFROM, Up: Environment, Next: Startup File
+
+GENERICPATH
+-----------
+
+  If the variable `gnus-use-generic-path' is `nil', the NNTP server name
+followed by the user login name is used in the `Path:' field of article
+headers you post.  If it is a string, the string followed by the user
+login name is used instead.  Otherwise, if it is non-`nil', only the
+user login name is used.  This is called the "GENERICPATH" feature in
+the Bnews system.
+
+  For example, to define the generic path `flab', put the following
+codes in `.emacs', `site-init.el' or `default.el'.  If you are a system
+administrator and installing GNUS for other users, `site-init.el' is the
+best place to define it because the definition is common to all users of
+the system having the same domain and organization (*Note Domain and
+Organization: Domain.).
+
+     (setq gnus-use-generic-path "flab")
+
+In this case, the `Path:' field will be generated as `Path: flab!USER'.
+
+
+File: gnus  Node: Startup File, Prev: GENERICPATH, Up: Environment
+
+Startup File
+------------
+
+  "Startup file" is a file recording information on articles you have
+already read.  GNUS uses `.newsrc' for the startup file as in the Bnews
+system.  If you think you will talk to exactly one NNTP server, you can
+use it without any problems.  Otherwise, if you want to talk to several
+NNTP servers, you'd better use server specific startup files since
+startup files are not portable between servers.  The server specific
+startup file for an NNTP server on a machine SERVER is a file named
+`.newsrc-SERVER'.  For example, `.newsrc-photon' is for an NNTP server
+on a machine named `photon'.  The primary name of the startup file,
+`.newsrc', is specified by the variable `gnus-startup-file' (*Note
+Variables::).
+
+  GNUS automatically adds newly created newsgroups to a startup file
+when getting started.  To prevent adding the newsgroups under some
+newsgroup hierarchies, you can use the options line in the startup file.
+Option `-n' of the options line in the startup file is recognized
+properly the same as for the Bnews system.  For example, if the options
+line is `options -n !talk talk.rumors', newsgroups under the `talk'
+hierarchy except for `talk.rumors' are ignored while checking new
+newsgroups.  This is the only way to keep startup files small.  These
+ignored newsgroups can be added manually using the command `U'
+(`gnus-Group-unsubscribe-group') in the Newsgroup buffer (*Note
+Maintenance::).
+
+  Once a startup file is updated by GNUS, the "quick startup file" of
+which the file name is generated by appending `.el' to that of the raw
+startup file is also created.  The quick startup file can be read by
+Emacs faster than the raw startup file since all information in the file
+is in lisp form.  If there is a quick startup file and it is newer than
+the raw startup file, the quick startup file is loaded instead of the
+raw startup file.  If the raw startup file is newer, it is normally read
+after loading the quick startup file.  You should not remove the quick
+startup file because it contains additional information.  Instead, make
+the raw startup file newer than that by touching it or force GNUS to
+read it by using the command `gnus-Group-restart' if you want to reflect
+the changes of the raw startup file to GNUS.
+
+
+File: gnus  Node: Texinfo Manual, Prev: Environment, Up: Installation
+
+Texinfo Manual
+==============
+
+  `gnus.texinfo' is a manual of GNUS written in Texinfo format.  This
+file can be printed using TeX, and also can be read using Info Mode of
+Emacs.
+
+  *Note Creating an Info File: (texinfo)Creating an Info File, to create
+an on-line Info file from the Texinfo manual.  If you are not allowed to
+create the Info file in the standard Info directory specified by the
+variable `Info-directory', create it in your private directory and set
+the variable `gnus-Info-directory' to the directory.
+
+  If this Info file is installed, you can read the documentation of GNUS
+according to the current major mode of GNUS.  The command
+`gnus-Info-find-node' to read the appropriate Info nodes of the Info
+file is assigned to `C-c C-i' in all major modes of GNUS.
+
+  *Note Printing Hardcopy: (texinfo)Printing Hardcopy, to print a
+hardcopy of the manual.
+
+
+File: gnus  Node: Starting up, Prev: Installation, Up: Top, Next: Buffers of GNUS
+
+Starting up GNUS
+****************
+
+  This chapter describes how to get started GNUS, how to use a local
+news spool directly, and how to read private directory.
+
+* Menu:
+
+* Getting Started::     How to get started GNUS.
+* Local News Spool::    How to use a local news spool.
+* Private Directory::   How to read a private directory.
+
+
+File: gnus  Node: Getting Started, Prev: Starting up, Up: Starting up, Next: Local News Spool
+
+Getting Started GNUS
+====================
+
+  Type `M-x gnus' at the top level of GNU Emacs to invoke GNUS.  Unless
+a default NNTP server is defined, you will be asked for the name of the
+server.  The NNTP server can be changed at startup time by giving a
+prefix argument to the command even if a default server is defined.
+*Note NNTP Server::, to define the default server.
+
+`M-x gnus'
+     Run GNUS using the default NNTP server.
+
+`C-u M-x gnus'
+     Run GNUS without using the default NNTP server.
+
+
+File: gnus  Node: Local News Spool, Prev: Getting Started, Up: Starting up, Next: Private Directory
+
+Using Local News Spool
+======================
+
+  If the NNTP server is the local host name (exactly the same as the
+value returned by the function `system-name'), and the variable
+`gnus-nntp-service' is nil, GNUS looks up the local news spool of your
+machine directly instead of NNTP (*Note NNTP Service::).
+
+  It may be effective not to use NNTP for reducing network traffic even
+if an NNTP server is running on the local machine.  Commands for
+retrieving articles by Message-IDs may, however, take longer time than
+for NNTP, or they may not work at all.  *Note Referencing Articles::, to
+refer to articles by the Message-IDs, and *Note Spool Variables::, for
+more information on the restrictions.
+
+
+File: gnus  Node: Private Directory, Prev: Local News Spool, Up: Starting up
+
+Reading a Private Directory
+===========================
+
+  If an NNTP server is preceded by a colon such as `:Mail', the user's
+private directory `~/Mail' is used as the news spool.  This makes it
+possible to read mail stored in MH folders or articles saved by GNUS.
+An active file for the directory is generated from files of which the
+file name consists of only numeric characters, and other files
+containing non-numeric characters in their file name are ignored.
+
+  If a private directory is specified as an NNTP server, GNUS loads the
+lisp library `mhspool.el' (*Note Files of GNUS::).  Loading of this file
+replaces some function definitions which are defined in `nntp.el' or
+`nnspool.el' in Emacs.  This means that if you want to read articles
+afterwards, you have to restore those definitions by loading `nntp.el'
+or `nnspool.el'.  You'd better restart Emacs if you do not know what to
+do in this case.
+
+  A server specific startup file for each directory must be created
+before starting GNUS.  For example, a startup file for the directory
+`~/Mail' is a file named `.newsrc-:Mail'.  *Note Startup File::, for
+more information on the server specific startup file.
+
+
+File: gnus  Node: Buffers of GNUS, Prev: Starting up, Up: Top, Next: Newsgroup Commands
+
+Buffers of GNUS
+***************
+
+  GNUS uses three buffers of Emacs: Newsgroup buffer, Subject buffer,
+and Article buffer.  Each of them is associated with a specific major
+mode of Emacs.
+
+* Menu:
+
+* Newsgroup Buffer:: a buffer for listing newsgroups.
+* Subject Buffer::   a buffer for listing subjects and other important headers.
+* Article Buffer::   a buffer for displaying messages of articles.
+
+
+File: gnus  Node: Newsgroup Buffer, Prev: Buffers of GNUS, Up: Buffers of GNUS, Next: Subject Buffer
+
+Newsgroup Buffer
+================
+
+  "Newsgroup buffer" is for listing newsgroups.  The major mode of this
+buffer is "Group Mode".  The buffer is created and popped up when GNUS
+starts.  Newsgroups which are subscribed to and contain unread articles
+are usually listed in the buffer.  If there is no such newsgroup, the
+buffer will be empty and a message `No news is good news.' will be
+displayed in the echo area of Emacs.
+
+  The contents of a Newsgroup buffer looks something like the following:
+
+     SM  NUMBER: NEWSGROUP
+
+S
+     A character indicating whether the newsgroup is subscribed to.  `U'
+     means the newsgroup is unsubscribed.  ` ' means it is subscribed
+     to.
+
+M
+     A character indicating whether there are unread articles in the
+     newsgroup.  `*' means there are no newly arrived articles in the
+     newsgroup.  ` ' means there are newly arrived articles.
+
+NUMBER
+     The number of unread articles in the newsgroup.
+
+NEWSGROUP
+     The name of the newsgroup.
+
+
+File: gnus  Node: Subject Buffer, Prev: Newsgroup Buffer, Up: Buffers of GNUS, Next: Article Buffer
+
+Subject Buffer
+==============
+
+  "Subject buffer" is for listing subjects and other important headers
+of articles.  The major mode of the buffer is "Subject Mode".  The
+buffer is created for each newsgroup when the newsgroup is selected in
+the Newsgroup buffer.
+
+  The contents of a Subject buffer looks something like the following:
+
+     S NUMBER:C[LINES:AUTHOR] SUBJECT
+
+S
+     A character indicating whether an article is newly arrived.  ` '
+     means the article is newly arrived.  `D' means it was read and
+     marked so.  `-' means it was read once but marked as unread again.
+
+NUMBER
+     The number assigned to the article.
+
+C
+     A character indicating which article is currently selected.  `+' is
+     placed on the current article.
+
+LINES
+     The number of lines of the article body.
+
+AUTHOR
+     Mail address of the author of the article.
+
+SUBJECT
+     Subject of the article.
+
+  Strings between `[' and `]' are optional, and can be customized using
+the variable `gnus-optional-headers'.  *Note Variables::, and *Note
+Hooks::, for more information on customization.
+
+
+File: gnus  Node: Article Buffer, Prev: Subject Buffer, Up: Buffers of GNUS
+
+Article Buffer
+==============
+
+  "Article buffer" is for displaying articles.  The major mode of the
+buffer is "Article Mode".  Very few commands are available in this
+buffer because most operations on the buffer can be done in the Subject
+buffer.
+
+
+File: gnus  Node: Newsgroup Commands, Prev: Buffers of GNUS, Up: Top, Next: Subject Commands
+
+Newsgroup Commands
+******************
+
+  The Newsgroup buffer is intended to show newsgroups which are
+subscribed to and contain unread articles.  Unsubscribed newsgroups or
+newsgroups containing no unread articles are not usually displayed in
+the buffer.
+
+  Commands for browsing through newsgroups, selecting newsgroups to read
+articles, and maintaining newsgroups are described in this chapter.
+
+* Menu:
+
+* Browsing Newsgroups::         Browsing through newsgroups.
+* Selecting a Newsgroup::       Selecting a newsgroup to read articles.
+* Maintenance::                 Maintaining newsgroups.
+* Exiting GNUS::                How to exit GNUS.
+* Other Newsgroup Commands::    Other miscellaneous commands.
+
+
+File: gnus  Node: Browsing Newsgroups, Prev: Newsgroup Commands, Up: Newsgroup Commands, Next: Selecting a Newsgroup
+
+Walking Around Newsgroups
+=========================
+
+  First of all, you have to move the point to a newsgroup to read
+articles from the desired newsgroup.
+
+`n'
+     Move point to the next newsgroup containing unread articles
+     (`gnus-Group-next-unread-group').
+
+`p'
+`DEL'
+     Move point to the previous newsgroup containing unread articles
+     (`gnus-Group-prev-unread-group').
+
+`N'
+`C-n'
+     Move point to the next newsgroup (`gnus-Group-next-group').
+
+`P'
+`C-p'
+     Move point to the previous newsgroup (`gnus-Group-prev-group').
+
+`j NEWSGROUP RET'
+     Move point to the specified NEWSGROUP (`gnus-Group-jump-to-group').
+
+`/'
+     Do an incremental search forward (`isearch-forward').
+
+`<'
+     Move point to the beginning of the buffer (`beginning-of-buffer').
+
+`>'
+     Move point to the end of the buffer (`end-of-buffer').
+
+`r'
+     Restrict visible newsgroups to the current region specified by the
+     point and the mark (`gnus-Group-restrict-groups').
+
+  The command `j' (`gnus-Group-jump-to-group') reads a newsgroup name
+interactively, and moves the point to it.  If there is no such newsgroup
+in the buffer, a line for the newsgroup is inserted at the beginning of
+the buffer.
+
+  The command `r' (`gnus-Group-restrict-groups') restricts visible
+newsgroups to the current region specified by the point and the mark.
+This is useful if you want to concentrate on a restricted set of
+newsgroups in a region.  Type `C-x w' (`widen') to remove the
+restriction.
+
+
+File: gnus  Node: Selecting a Newsgroup, Prev: Browsing Newsgroups, Up: Newsgroup Commands, Next: Maintenance
+
+Selecting a Newsgroup
+=====================
+
+  If you successfully move the point to a desired newsgroup, you can
+select the newsgroup to read articles by typing `SPC'
+(`gnus-Group-read-group') or `=' (`gnus-Group-select-group') on that
+line.
+
+`SPC'
+     Select the newsgroup, and then select the first unread article
+     automatically (`gnus-Group-read-group').
+
+`='
+     Select the newsgroup (`gnus-Group-select-group'). No article is
+     selected automatically.
+
+  To prevent automatic selection of the first unread article even when
+the newsgroup is selected by the command SPC (`gnus-Group-read-group'),
+set the variable `gnus-auto-select-first' to `nil'.  If you want to
+change the value of the variable according to the selected newsgroups,
+set the variable in the hook `gnus-Select-group-hook'.
+
+  If unread articles are contained in a selected newsgroup, they become
+ready to be read.  Otherwise, all articles in the newsgroup become ready
+to be read.  All articles in a newsgroup can be selected unconditionally
+by giving a prefix argument to the commands SPC and =
+(`gnus-Group-read-group' and `gnus-Group-select-group').
+
+  If the number of articles being selected is larger than the variable
+`gnus-large-newsgroup', the number of articles actually selected is
+asked for.  If the given value N is positive, the last N articles will
+be selected.  If N is negative, the first N articles will be selected.
+An empty string means to select all articles.
+
+  *Note Variables::, and *Note Hooks::, for more information on
+customization.
+
+
+File: gnus  Node: Maintenance, Prev: Selecting a Newsgroup, Up: Newsgroup Commands, Next: Exiting GNUS
+
+Maintaining Newsgroups
+======================
+
+  Subscription of newsgroups, deletion of bogus newsgroups, and other
+related operations are described in this section.
+
+`u'
+     Unsubscribe from (or subscribe to) the newsgroup
+     (`gnus-Group-unsubscribe-current-group').
+
+`U NEWSGROUP RET'
+     Unsubscribe from (or subscribe to) the specified NEWSGROUP
+     (`gnus-Group-unsubscribe-group').  If it is not contained in the
+     startup file, it is added to the file.
+
+`c'
+     Mark all articles as read in the newsgroup (`gnus-Group-catch-up').
+
+`l'
+     Redisplay newsgroups which are subscribed to and containing unread
+     articles (`gnus-Group-list-groups').
+
+`L'
+     Display all newsgroups unconditionally
+     (`gnus-Group-list-all-groups').
+
+`b'
+     Check bogus newsgroups (`gnus-Group-check-bogus-groups').  Bogus
+     means non-active.
+
+`g'
+     Get newly arrived articles (`gnus-Group-get-new-news').  In fact,
+     GNUS reads the active file from the NNTP server again.
+
+`R'
+     Force to read the raw startup file and get newly arrived articles
+     (`gnus-Group-restart').
+
+  The command `U' (`gnus-Group-unsubscribe-group') reads a newsgroup
+name interactively, and toggles its subscription flag if it is already
+in the startup file.  Otherwise, if it is not contained in the startup
+file, it is added to the file.  Thus, you can add newly created
+newsgroups manually which are not added automatically because of the
+options line in the startup file.  *Note Startup File::, for more
+information on the startup file and options line.
+
+  The command `c' (`gnus-Group-catch-up') marks all articles as read in
+a newsgroup.  Make sure that this command does not take account of
+cross-reference information in the `Xref:' field, while the command `c'
+(`gnus-Subject-catch-up-and-exit') in Subject Mode does.
+
+  Only subscribed newsgroups containing unread articles are usually
+displayed in the Newsgroup buffer.  Type `L'
+(`gnus-Group-list-all-groups') to show all newsgroups which are
+currently active.
+
+  A "bogus newsgroup" is one not in the list of active newsgroups in the
+active file.  Bogus newsgroups which are deleted or renamed must be
+deleted from the startup file (*Note Startup File::) explicitly by the
+command `b' (`gnus-Group-check-bogus-groups').
+
+  If you want to change the order of newsgroups listed in the Newsgroup
+buffer, edit the raw startup file by yourself using the ordinary Emacs
+commands and then restart GNUS using the command `R'
+(`gnus-Group-restart').  Generally speaking, if you want to reflect the
+changes of the raw startup file to GNUS, the raw startup file must be
+newer than the quick startup file.  *Note Startup File::, for more
+information on the startup file.
+
+  GNUS reads the active file at start up time to know about currently
+active articles.  This information is not updated unless you force GNUS
+to do so by using the command `g' (`gnus-Group-get-new-news') or the
+command `R' (`gnus-Group-restart').
+
+
+File: gnus  Node: Exiting GNUS, Prev: Maintenance, Up: Newsgroup Commands, Next: Other Newsgroup Commands
+
+Exiting GNUS
+============
+
+`s'
+`x'
+     Update the startup file `.newsrc' (`gnus-Group-force-update').
+
+`z'
+     Suspend the current GNUS session to make it possible to resume it
+     later (`gnus-Group-suspend').
+
+`q'
+     Update the startup file `.newsrc', and then exit GNUS
+     (`gnus-Group-exit').
+
+`Q'
+     Exit GNUS without updating the startup file `.newsrc'
+     (`gnus-Group-quit').
+
+  If a GNUS session is suspended by the command `z'
+(`gnus-Group-suspend'), it is possible to resume it later without any
+time-consuming initializations.  Switch to the Newsgroup buffer and type
+`g' (`gnus-Group-get-new-news') to get newly arrived articles if you
+want to resume the suspended GNUS session.  It is a good idea to update
+the startup file (*Note Startup File::) before suspending GNUS.
+
+  If you want to forget what you read this GNUS session, exit GNUS by
+the command `Q' (`gnus-Group-quit').  Otherwise, exit by the command `q'
+(`gnus-Group-exit') to update the startup file.
+
+  The hook `gnus-Exit-gnus-hook' is called when exiting or suspending
+GNUS.  If you want to clear out Emacs buffers which were created by GNUS
+and remain afterwards, use this hook.
+
+
+File: gnus  Node: Other Newsgroup Commands, Prev: Exiting GNUS, Up: Newsgroup Commands
+
+Miscellaneous Commands
+======================
+
+  Other miscellaneous commands are described here.
+
+`a'
+     Compose a new article (`gnus-Group-post-news').  *Note Followup and
+     Reply::, for more information.
+
+`M-k'
+     Edit a local KILL file (`gnus-Group-edit-local-kill').  *Note KILL
+     File::, for more information.
+
+`M-K'
+     Edit a global KILL file (`gnus-Group-edit-global-kill').  *Note
+     KILL File::, for more information.
+
+`V'
+     Print version number of this GNUS (`gnus-version').
+
+`?'
+     Describe Group Mode commands briefly
+     (`gnus-Group-describe-briefly').
+
+`C-c C-i'
+     Read Info on Group Mode (`gnus-Info-find-node').  *Note Texinfo
+     Manual::, to prepare an Info file of GNUS.
+
+
+File: gnus  Node: Subject Commands, Prev: Newsgroup Commands, Up: Top, Next: Article Commands
+
+Subject Commands
+****************
+
+  The Subject buffer is intended to show interesting headers of articles
+in a newsgroup and to help you know what kind of discussions are held in
+the newsgroup.  Messages of articles are displayed in the Article buffer
+which is usually popped up automatically when necessary.  Scrolling of
+the messages and most other commands on articles can be done in the
+Subject buffer.
+
+* Menu:
+
+* Reading Articles::            How to read articles.
+* Searching Articles::          Searching for articles.
+* Referencing Articles::        Referencing parent articles.
+* Saving Articles::             Saving articles in your favorite format.
+* Sorting Headers::             Sorting subjects and other headers.
+* Followup and Reply::          Followup and reply commands.
+* Exiting Newsgroup::           How to exit the current newsgroup.
+* Other Subject Commands::      Other miscellaneous commands.
+
+
+File: gnus  Node: Reading Articles, Prev: Subject Commands, Up: Subject Commands, Next: Searching Articles
+
+Reading Articles
+================
+
+  Commands for browsing headers and reading messages are described here.
+
+* Menu:
+
+* Browsing Headers::            Browsing through headers.
+* Moving Among Articles::       Selecting articles.
+* Scrolling::                   Browsing through a message.
+* Marking Articles::            Marking articles as (un)read.
+* Digest Articles::             How to read digest articles.
+
+
+File: gnus  Node: Browsing Headers, Prev: Reading Articles, Up: Reading Articles, Next: Moving Among Articles
+
+Walking Around Headers
+----------------------
+
+  The commands described here are for moving the point on headers.  Type
+SPC (`gnus-Subject-next-page') or `g' (`gnus-Subject-show-article') to
+read an article on the line (*Note Scrolling::).
+
+`C-n'
+     Move point to the next header (`gnus-Subject-next-subject').
+
+`C-p'
+     Move point to the previous header (`gnus-Subject-prev-subject').
+
+`M-n'
+     Move point to the next header, skipping marked articles
+     (`gnus-Subject-next-unread-subject').
+
+`M-p'
+     Move point to the previous header, skipping marked articles
+     (`gnus-Subject-prev-unread-subject').
+
+`j NUMBER RET'
+     Move point to the header specified by the article NUMBER
+     (`gnus-Subject-goto-subject').
+
+`/'
+     Do an incremental search on headers (`isearch-forward').
+
+  The command `delete-other-windows' to delete other windows is normally
+assigned to `C-x 0'.  This command is very useful to show the Subject
+buffer full window when browsing through many headers.  That is why this
+command is also assigned to `=' in Subject Mode.
+
+  Long lines in the Subject buffer are truncated and the continuation
+lines are not displayed normally.  The command `C-t'
+(`gnus-Subject-toggle-truncation') toggles the truncation of the lines
+in the buffer.
+
+`='
+     Delete other windows to show the Subject buffer full window
+     (`delete-other-windows').
+
+`C-t'
+     Toggle truncation of the Subjet buffer
+     (`gnus-Subject-toggle-truncation').
+
+
+File: gnus  Node: Moving Among Articles, Prev: Browsing Headers, Up: Reading Articles, Next: Scrolling
+
+Moving Among Articles
+---------------------
+
+  The commands described here are for moving the point on headers, and
+then automatically selecting articles afterward.
+
+`n'
+     Read the next article, skipping marked articles
+     (`gnus-Subject-next-unread-article').
+
+`p'
+     Read the previous article, skipping marked articles
+     (`gnus-Subject-prev-unread-article').
+
+`N'
+     Read the next article (`gnus-Subject-next-article').
+
+`P'
+     Read the previous article (`gnus-Subject-prev-article').
+
+`M-C-n'
+     Read the next article with the same subject as the current article
+     (`gnus-Subject-next-same-subject').
+
+`M-C-p'
+     Read the previous article with the same subject as the current
+     article (`gnus-Subject-prev-same-subject').
+
+`M-x gnus-Subject-next-unread-same-subject'
+     Read the next article with the same subject as the current article,
+     skipping marked articles.
+
+`M-x gnus-Subject-prev-unread-same-subject'
+     Read the previous article with the same subject as the current
+     article, skipping marked articles.
+
+`.'
+     Read the first unread article
+     (`gnus-Subject-first-unread-article').
+
+`l'
+     Read the article selected last (`gnus-Subject-goto-last-article').
+
+`J NUMBER RET'
+     Read the article specified by the article NUMBER
+     (`gnus-Subject-goto-article').
+
+  If the variable `gnus-auto-select-same' is non-`nil', commands `n' and
+`p' (`gnus-Subject-next-unread-article' and
+`gnus-Subject-prev-unread-article') move the point to unread articles
+with the same subject as the current article like the commands `M-x
+gnus-Subject-next-unread-same-subject' and `M-x
+gnus-Subject-prev-unread-same-subject', respectively.  If you are used
+to running `rn -S', set the variable to non-`nil'.
+
+  The variable `gnus-auto-select-next' defines the behavior of GNUS when
+there is no unread article in the current newsgroup and a command
+selecting the next unread article is executed.  If the variable is
+non-`nil', the next newsgroup containing unread articles is selected
+automatically.
+
+  *Note Variables::, for more information on customization.
+
+
+File: gnus  Node: Scrolling, Prev: Moving Among Articles, Up: Reading Articles, Next: Marking Articles
+
+Scrolling Within an Article
+---------------------------
+
+  Type SPC (`gnus-Subject-next-page') to scroll to the next page of the
+current article.  If no article is selected yet, an article near the
+point is selected and its first page is displayed in the Article buffer.
+The next unread article is selected automatically if SPC is typed at the
+end of the message.
+
+`SPC'
+     Scroll to the next page of the current article
+     (`gnus-Subject-next-page').  Select it first if no article is
+     selected yet.  Select the next unread article automatically at the
+     end of the message.
+
+`DEL'
+     Scroll to the previous page of the current article
+     (`gnus-Subject-prev-page').
+
+`RET'
+     Scroll up or down one line of the current article
+     (`gnus-Subject-scroll-up').
+
+`<'
+     Move point to the beginning of the current article
+     (`gnus-Subject-beginning-of-article').
+
+`>'
+     Move point to the end of the current article
+     (`gnus-Subject-end-of-article').
+
+`w'
+     Stop page breaking (`gnus-Subject-stop-page-breaking').
+
+`v'
+     Show all headers of the current article
+     (`gnus-Subject-show-all-headers').
+
+`t'
+     Show all headers of the current article if pruned header currently
+     shown, or vice versa (`gnus-Subject-toggle-header').
+
+`C-c C-r'
+     Caesar rotate letters by 13 places and Japanese characters by 47
+     places (`gnus-Subject-caesar-message').
+
+`g'
+     Force to read the current article again
+     (`gnus-Subject-show-article').
+
+  If the Article buffer is not visible, it is popped up under the Subjet
+buffer when necessary.  The height of the Subject buffer is specified by
+the variable `gnus-subject-lines-height'.
+
+  The command `C-c C-r' (`gnus-Subject-caesar-message') rotates all
+letters in the message body of the current article by 13 places.
+Japanese characters are rotated by 47 places.  Running the command twice
+on the same article results the original message.
+
+  If the variable `gnus-break-pages' is non-`nil', the message is broken
+into pages at page delimiters specified by the variable
+`gnus-page-delimiter'.  The variable `gnus-more-message' specifies a
+message displayed at the end of the pages.  The command `w'
+(`gnus-Subject-stop-page-breaking') temporary suspends page breaks.
+
+  The variable `gnus-ignored-headers' specifies header fields which
+should be ignored.  The command `v' (`gnus-Subject-show-all-headers')
+shows all headers of the current article, while the command `t'
+(`gnus-Subject-toggle-header') toggles the headers.
+
+  *Note Variables::, and *Note Hooks::, for more information on
+customization.
+
+

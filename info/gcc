@@ -1,0 +1,125 @@
+Info file: gcc.info,    -*-Text-*-
+produced by texinfo-format-buffer
+from file: gcc.texinfo
+
+
+This file documents the use and the internals of the GNU compiler.
+
+Copyright (C) 1988, 1989 Free Software Foundation, Inc.
+
+Permission is granted to make and distribute verbatim copies of
+this manual provided the copyright notice and this permission notice
+are preserved on all copies.
+
+Permission is granted to copy and distribute modified versions of this
+manual under the conditions for verbatim copying, provided also that the
+section entitled "GNU General Public License" is included exactly as
+in the original, and provided that the entire resulting derived work is
+distributed under the terms of a permission notice identical to this one.
+
+Permission is granted to copy and distribute translations of this manual
+into another language, under the above conditions for modified versions,
+except that the section entitled "GNU General Public License" and
+this permission notice may be included in translations approved by the
+Free Software Foundation instead of in the original English.
+
+
+
+
+Indirect:
+gcc.info-1: 1090
+gcc.info-2: 50688
+gcc.info-3: 104217
+gcc.info-4: 160741
+gcc.info-5: 211241
+gcc.info-6: 261433
+gcc.info-7: 314307
+gcc.info-8: 377306
+
+Tag table:
+(Indirect)
+Node: Top1092
+Node: Copying2276
+Node: Contributors15468
+Node: Options17496
+Node: Installation50690
+Node: VMS Install64591
+Node: Trouble67166
+Node: Incompatibilities70350
+Node: Extensions76114
+Node: Statement Exprs77964
+Node: Naming Types79403
+Node: Typeof80479
+Node: Lvalues82322
+Node: Conditionals84211
+Node: Zero-Length85125
+Node: Variable-Length85788
+Node: Subscripting87549
+Node: Pointer Arith88015
+Node: Initializers88502
+Node: Constructors88913
+Node: Function Attributes90397
+Node: Dollar Signs92065
+Node: Alignment92363
+Node: Inline93671
+Node: Extended Asm95679
+Node: Asm Labels104219
+Node: Global Reg Vars105511
+Node: Alternate Keywords109883
+Node: Bugs111010
+Node: Bug Criteria111716
+Node: Bug Reporting114474
+Node: Portability123261
+Node: Interface125012
+Node: Passes129377
+Node: RTL141867
+Node: RTL Objects143684
+Node: Accessors146583
+Node: Flags149859
+Node: Machine Modes154121
+Node: Constants160743
+Node: Regs and Memory163480
+Node: Arithmetic169731
+Node: Comparisons174975
+Node: Bit Fields177732
+Node: Conversions178803
+Node: RTL Declarations181467
+Node: Side Effects182231
+Node: Incdec190936
+Node: Assembler193292
+Node: Insns194804
+Node: Calls204716
+Node: Sharing206811
+Node: Machine Desc209613
+Node: Patterns211243
+Node: Example214512
+Node: RTL Template215624
+Node: Output Template223170
+Node: Output Statement226044
+Node: Constraints228159
+Node: Simple Constraints229080
+Node: Multi-Alternative239366
+Node: Class Preferences242367
+Node: Modifiers243235
+Node: No Constraints246607
+Node: Standard Names247704
+Node: Pattern Ordering261435
+Node: Dependent Patterns262650
+Node: Jump Patterns267365
+Node: Peephole Definitions269720
+Node: Expander Definitions275067
+Node: Machine Macros281557
+Node: Run-time Target282716
+Node: Storage Layout286552
+Node: Registers290845
+Node: Register Classes304670
+Node: Stack Layout314309
+Node: Library Names334880
+Node: Addressing Modes336861
+Node: Cross-compilation342562
+Node: Misc347004
+Node: Condition Code353408
+Node: Assembler Format355934
+Node: Config377308
+
+End tag table

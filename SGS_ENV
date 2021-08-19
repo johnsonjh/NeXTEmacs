@@ -1,0 +1,34 @@
+#
+# NeXT Version
+#
+# SGS_ENV file for version roots
+#
+# This SGS_ENV file should exist in the version root
+# of all version trees.  It will normally be placed in
+# the master version root and be cloned to all development
+# versions.
+#
+# BASIC definitions for the SGS tools
+#
+# The MASTER USER for this project.
+#	The master versions of the project software reside
+#	in the master user's tree and are owned by the master user.
+#
+# The PROJECT_NAME for this project.
+#	The project name is used searching either the master's or
+#	developer's home/SGS_ENV files to determine the project
+#	root or the list of project developers (see ~osdev/SGS_ENV)
+#
+MASTER_USER=comp
+PROJECT_NAME=emacs_proj
+#
+# DONT_DIFF is an egrep(1) pattern which should match all files that
+# not interesting to diff or integrate.
+#
+DONT_DIFF:/tags$|\.o$|/errs$|/make\.out$|\.a$
+#
+# Definitions for cross(1)
+#
+# SGS_VERBOSE says "echo all `translated' commands"
+#
+SGS_VERBOSE

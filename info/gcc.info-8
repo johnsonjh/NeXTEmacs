@@ -1,0 +1,53 @@
+Info file: gcc.info,    -*-Text-*-
+produced by texinfo-format-buffer
+from file: gcc.texinfo
+
+
+This file documents the use and the internals of the GNU compiler.
+
+Copyright (C) 1988, 1989 Free Software Foundation, Inc.
+
+Permission is granted to make and distribute verbatim copies of
+this manual provided the copyright notice and this permission notice
+are preserved on all copies.
+
+Permission is granted to copy and distribute modified versions of this
+manual under the conditions for verbatim copying, provided also that the
+section entitled "GNU General Public License" is included exactly as
+in the original, and provided that the entire resulting derived work is
+distributed under the terms of a permission notice identical to this one.
+
+Permission is granted to copy and distribute translations of this manual
+into another language, under the above conditions for modified versions,
+except that the section entitled "GNU General Public License" and
+this permission notice may be included in translations approved by the
+Free Software Foundation instead of in the original English.
+
+
+
+
+File: gcc.info  Node: Config, Prev: Machine Macros, Up: Top
+
+The Configuration File
+**********************
+
+The configuration file `xm-MACHINE.h' contains macro definitions
+that describe the machine and system on which the compiler is running.
+Most of the values in it are actually the same on all machines that GNU CC
+runs on, so large parts of all configuration files are identical.  But
+there are some macros that vary:
+
+`FAILURE_EXIT_CODE'
+     A C expression for the status code to be returned when the compiler
+     exits after serious errors.
+
+`SUCCESS_EXIT_CODE'
+     A C expression for the status code to be returned when the compiler
+     exits without serious errors.
+
+In addition, configuration files for system V define `bcopy',
+`bzero' and `bcmp' as aliases.  Some files define `alloca'
+as a macro when compiled with GNU CC, in order to take advantage of the
+benefit of GNU CC's built-in `alloca'.
+
+

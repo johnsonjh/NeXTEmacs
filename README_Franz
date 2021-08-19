@@ -1,0 +1,379 @@
+
+The following diffs represent the changes made by Franz Inc. to the
+standard GNU Emacs 18.53 [from prep.ai.mit.edu on 4/14/89 in the
+directory /u2/emacs, file emacs-18.53.tar.Z].  The changes were either
+to fix bugs in GNU Emacs or to add features necessary for the
+Emacs/Lisp interface.
+
+	Kevin Layer
+	Franz Inc.
+	5/23/89
+
+============================= ./etc/server.c
+68a69
+>   char *server_file;
+87,93c88,97
+<   if ((homedir = getenv ("HOME")) == NULL)
+<     {
+<       fprintf (stderr,"No home directory\n");
+<       exit (1);
+<     }
+<   strcpy (server.sun_path, homedir);
+<   strcat (server.sun_path, "/.emacs_server");
+---
+>   if ((server_file = getenv ("EMACS_SERVER")) != NULL) {
+>       strcat (server.sun_path, server_file);
+>   } else {
+>       if ((homedir = getenv ("HOME")) == NULL) {
+> 	  fprintf (stderr,"No home directory\n");
+> 	  exit (1);
+>       }
+>       strcpy (server.sun_path, homedir);
+>       strcat (server.sun_path, "/.emacs_server");
+>   }
+============================= ./etc/emacsclient.c
+59a60
+>   char *server_file;
+79,85c80,89
+<   if ((homedir = getenv ("HOME")) == NULL)
+<     {
+<       fprintf (stderr, "No home directory\n");
+<       exit (1);
+<     }
+<   strcpy (server.sun_path, homedir);
+<   strcat (server.sun_path, "/.emacs_server");
+---
+>   if ((server_file = getenv ("EMACS_SERVER")) != NULL) {
+>       strcat (server.sun_path, server_file);
+>   } else {
+>       if ((homedir = getenv ("HOME")) == NULL) {
+> 	  fprintf (stderr,"No home directory\n");
+> 	  exit (1);
+>       }
+>       strcpy (server.sun_path, homedir);
+>       strcat (server.sun_path, "/.emacs_server");
+>   }
+============================= ./lisp/loadup.el
+115c115,117
+< 	(message "Dumping under names xemacs and %s" name))
+---
+> 	(message "Dumping under name xemacs")
+> ;;	(message "Dumping under names xemacs and %s" name)
+> 	)
+121,126c123,128
+<       (let ((name (concat "emacs-" emacs-version)))
+< 	(while (string-match "[^-+_.a-zA-Z0-9]+" name)
+< 	  (setq name (concat (downcase (substring name 0 (match-beginning 0)))
+< 			     "-"
+< 			     (substring name (match-end 0)))))
+< 	(add-name-to-file "xemacs" name t))
+---
+> ;;    (let ((name (concat "emacs-" emacs-version)))
+> ;;	(while (string-match "[^-+_.a-zA-Z0-9]+" name)
+> ;;	  (setq name (concat (downcase (substring name 0 (match-beginning 0)))
+> ;;			     "-"
+> ;;			     (substring name (match-end 0)))))
+> ;;	(add-name-to-file "xemacs" name t))
+============================= ./src/emacs.c
+227,231d226
+< #ifdef BSD
+<   /* interrupt_input has trouble if we aren't in a separate process group.  */
+<   setpgrp (getpid (), getpid ());
+< #endif
+< 
+============================= ./src/malloc.c
+580c580
+<   if ((p = (struct mhead *) mem) == 0)
+---
+>   if (mem == 0)
+582c582
+<   p -= (8 / sizeof (struct mhead));
+---
+>   p = (struct mhead *) (mem - ((sizeof *p + 7) & ~7));
+600c600
+<   nbytes = (n + sizeof *p + EXTRA + 7) & ~7;
+---
+>   nbytes = (n + ((sizeof *p + 7) & ~7) + EXTRA + 7) & ~7;
+============================= ./src/process.c
+686a687,697
+> 
+> DEFUN ("process-kill-without-query-p", Fprocess_kill_without_query_p,
+>   Sprocess_kill_without_query_p, 1, 1, 0,
+>   "Return t or nil, depending on whether or not PROCESS will be killed\n\
+> without query.")
+>   (proc)
+>      register Lisp_Object proc;
+> {
+>   CHECK_PROCESS (proc, 0);
+>   return XPROCESS (proc)->kill_without_query;
+> }
+1064a1076,1079
+> #ifdef HAVE_UNIX_DOMAIN
+> #include <sys/un.h>
+> #endif HAVE_UNIX_DOMAIN
+> 
+1066c1081,1082
+<        4, 4, 0, 
+---
+>        4, 4, 0,
+> #ifdef HAVE_UNIX_DOMAIN
+1070a1087,1088
+> If SERVICE is 0, then HOST is taken to be the name of a socket file, and a\n\
+> Unix domain socket is opened.\n\
+1079c1097,1113
+<  specifying a port number to connect to.")
+---
+>  specifying a port number to connect to."
+> #else
+>   "Open a TCP connection for a service to a host.\n\
+> Returns a subprocess-object to represent the connection.\n\
+> Input and output work as for subprocesses; `delete-process' closes it.\n\
+> Args are NAME BUFFER HOST SERVICE.\n\
+> NAME is name for process.  It is modified if necessary to make it unique.\n\
+> BUFFER is the buffer (or buffer-name) to associate with the process.\n\
+>  Process output goes at end of that buffer, unless you specify\n\
+>  an output stream or filter function to handle the output.\n\
+>  BUFFER may be also nil, meaning that this process is not associated\n\
+>  with any buffer\n\
+> Third arg is name of the host to connect to.\n\
+> Fourth arg SERVICE is name of the service desired, or an integer\n\
+>  specifying a port number to connect to."
+> #endif HAVE_UNIX_DOMAIN
+>        )
+1085a1120,1123
+> #ifdef HAVE_UNIX_DOMAIN
+>   struct sockaddr_un server;
+>   int unix_domain = 0;
+> #endif HAVE_UNIX_DOMAIN
+1095c1133,1140
+<     port = htons ((unsigned short) XINT (service));
+---
+>     {
+> #ifdef HAVE_UNIX_DOMAIN
+> 	if (XINT (service) == 0)
+> 	  unix_domain = 1;
+> 	else
+> #endif HAVE_UNIX_DOMAIN
+> 	  port = htons ((unsigned short) XINT (service));
+>     }
+1105,1107c1150,1161
+<   host_info = gethostbyname (XSTRING (host)->data);
+<   if (host_info == 0)
+<     error ("Unknown host \"%s\"", XSTRING(host)->data);
+---
+> #ifdef HAVE_UNIX_DOMAIN
+>   if (unix_domain)
+>     {
+> 	server.sun_family = AF_UNIX;
+> 	strcpy (server.sun_path, XSTRING (host)->data);
+>     }
+>   else
+> #endif HAVE_UNIX_DOMAIN
+>     {
+> 	host_info = gethostbyname (XSTRING (host)->data);
+> 	if (host_info == 0)
+> 	  error ("Unknown host \"%s\"", XSTRING(host)->data);
+1109,1112c1163,1167
+<   bzero (&address, sizeof address);
+<   bcopy (host_info->h_addr, (char *) &address.sin_addr, host_info->h_length);
+<   address.sin_family = host_info->h_addrtype;
+<   address.sin_port = port;
+---
+> 	bzero (&address, sizeof address);
+> 	bcopy (host_info->h_addr, (char *) &address.sin_addr, host_info->h_length);
+> 	address.sin_family = host_info->h_addrtype;
+> 	address.sin_port = port;
+>     }
+1114,1115c1169,1176
+<   s = socket (host_info->h_addrtype, SOCK_STREAM, 0);
+<   if (s < 0) 
+---
+> #ifdef HAVE_UNIX_DOMAIN
+>   if (unix_domain)
+>     s = socket (AF_UNIX, SOCK_STREAM, 0);
+>   else
+> #endif HAVE_UNIX_DOMAIN
+>     s = socket (host_info->h_addrtype, SOCK_STREAM, 0);
+>   
+>   if (s < 0)
+1118,1119c1179,1190
+<   if (connect (s, &address, sizeof address) == -1)
+<     error ("Host \"%s\" not responding", XSTRING (host)->data);
+---
+> #ifdef HAVE_UNIX_DOMAIN
+>   if (unix_domain)
+>     {
+> 	if (connect (s, &server, strlen (server.sun_path) + 2) < 0)
+> 	  error ("connect failed for socket: \"%s\"", XSTRING (host)->data);
+>     }
+>   else
+> #endif HAVE_UNIX_DOMAIN
+>     {
+> 	if (connect (s, &address, sizeof address) == -1)
+> 	  error ("Host \"%s\" not responding", XSTRING (host)->data);
+>     }
+1199c1270
+<   0, 1, 0,
+---
+>   0, 2, 0,
+1203,1205c1274,1277
+< from PROCESS.")
+<   (proc)
+<      register Lisp_Object proc;
+---
+> from PROCESS.  Non-nil arg TIMEOUT means wait for that many seconds, -1\n\
+> return immediately.")
+>   (proc, timeout)
+>      register Lisp_Object proc, timeout;
+1207,1208c1279,1285
+<   if (NULL (proc))
+<     wait_reading_process_input (-1, 0, 0);
+---
+>   if (NULL (proc)) {
+>       if (XTYPE(timeout) == Lisp_Int)
+>         timeout = XINT(timeout);
+>       else
+>         timeout = -1;
+>       wait_reading_process_input (timeout, 0, 0);
+>     }
+1210a1288,1291
+>       if (XTYPE(timeout) == Lisp_Int)
+>         timeout = XINT(timeout);
+>       else
+>         timeout = 0;
+1212c1293
+<       wait_reading_process_input (0, XPROCESS (proc), 0);
+---
+>       wait_reading_process_input (timeout, XPROCESS (proc), 0);
+2169a2251
+>   defsubr (&Sprocess_kill_without_query_p);
+============================= ./src/s-bsd4-3.h
+77a78,84
+>  * Define HAVE_UNIX_DOMAIN is system supports 4.2-compatible UNIX
+>  * domain sockets.
+>  */
+> 
+> #define HAVE_UNIX_DOMAIN
+> 
+> /*
+============================= ./src/s-bsd4-2.h
+77a78,84
+>  * Define HAVE_UNIX_DOMAIN is system supports 4.2-compatible UNIX
+>  * domain sockets.
+>  */
+> 
+> #define HAVE_UNIX_DOMAIN
+> 
+> /*
+============================= ./src/s-rtu.h
+90a91,97
+>  * Define HAVE_UNIX_DOMAIN is system supports 4.2-compatible UNIX
+>  * domain sockets.
+>  */
+> 
+> #define HAVE_UNIX_DOMAIN
+> 
+> /*
+============================= ./src/s-hpux.h
+90a91,97
+>  * Define HAVE_UNIX_DOMAIN is system supports 4.2-compatible UNIX
+>  * domain sockets.
+>  */
+> 
+> #define HAVE_UNIX_DOMAIN
+> 
+> /*
+============================= ./src/syntax.c
+510a511
+> 		    case Squote:	/* DKL 5/23/89 */
+1031a1033,1034
+> Lisp_Object Vparse_partial_sexp_result;
+> 
+1036a1040
+>   Lisp_Object val1, val2, val3, val4, val5, val6, val7;
+1054,1060c1058,1085
+<   return Fcons (make_number (state.depth),
+< 	   Fcons (state.prevlevelstart < 0 ? Qnil : make_number (state.prevlevelstart),
+< 	     Fcons (state.thislevelstart < 0 ? Qnil : make_number (state.thislevelstart),
+< 	       Fcons (state.instring >= 0 ? make_number (state.instring) : Qnil,
+< 		 Fcons (state.incomment ? Qt : Qnil,
+< 		   Fcons (state.quoted ? Qt : Qnil,
+< 			  Fcons (make_number (state.mindepth), Qnil)))))));
+---
+>   val1 = make_number (state.depth);
+>   val2 = state.prevlevelstart < 0 ? Qnil : make_number (state.prevlevelstart);
+>   val3 = state.thislevelstart < 0 ? Qnil : make_number (state.thislevelstart);
+>   val4 = state.instring >= 0 ? make_number (state.instring) : Qnil;
+>   val5 = state.incomment ? Qt : Qnil;
+>   val6 = state.quoted ? Qt : Qnil;
+>   val7 = make_number (state.mindepth);
+>   if (NULL (Vparse_partial_sexp_result))
+>     return Fcons (val1,
+> 	     Fcons (val2, 
+> 	       Fcons (val3,
+> 		 Fcons (val4,
+> 		   Fcons (val5,
+> 		     Fcons (val6,
+> 		       Fcons (val7, Qnil)))))));
+>   else
+>     {
+>       Lisp_Object xx = Vparse_partial_sexp_result;
+> 
+>       Fsetcar(xx, val1), xx = Fcdr(xx);
+>       Fsetcar(xx, val2), xx = Fcdr(xx);
+>       Fsetcar(xx, val3), xx = Fcdr(xx);
+>       Fsetcar(xx, val4), xx = Fcdr(xx);
+>       Fsetcar(xx, val5), xx = Fcdr(xx);
+>       Fsetcar(xx, val6), xx = Fcdr(xx);
+>       Fsetcar(xx, val7), xx = Fcdr(xx);
+>       return Vparse_partial_sexp_result;
+>     }
+1133a1159,1163
+> 
+>   Vparse_partial_sexp_result = Qnil;
+> 
+>   DEFVAR_LISP ("parse-partial-sexp-result", &Vparse_partial_sexp_result,
+>     "If non-nil, it should be a list of length 7.");
+============================= ./src/ymakefile
+135c135
+< CFLAGS= C_DEBUG_SWITCH -Demacs $(MYCPPFLAG) C_SWITCH_MACHINE C_SWITCH_SYSTEM
+---
+> CFLAGS= C_OPTIMIZE_SWITCH -Demacs $(MYCPPFLAG) C_SWITCH_MACHINE C_SWITCH_SYSTEM
+273c273
+< 	./temacs -batch -l inc-vers
+---
+> 	/* ./temacs -batch -l inc-vers */
+============================= ./src/m-news800.h
+74c74
+< #define SEGMENT_MASK (SEGSIZ - 1)
+---
+> /* #define SEGMENT_MASK (SEGSIZ - 1) */
+76,77c76
+< /* No sigmask defined anywhere else that I know of. */
+< #define sigmask(n) (1 << ((n) - 1))
+---
+> /* the following is not needed on NEWS-OS Release 3.2 (4.3BSD compatible) */
+78a78
+> /* #define sigmask(n) (1 << ((n) - 1)) */
+============================= ./src/fileio.c
+1365a1366,1380
+> DEFUN ("file-size", Ffile_size, Sfile_size, 1, 1, 0,
+>   "Return the size of FILE, as an integer.")
+>   (filename)
+>      Lisp_Object filename;
+> {
+>   Lisp_Object abspath;
+>   struct stat st;
+> 
+>   abspath = expand_and_dir_to_file (filename, bf_cur->directory);
+> 
+>   if (stat (XSTRING (abspath)->data, &st) < 0)
+>     return Qnil;
+>   return make_number (st.st_size);
+> }
+> 
+2169a2185
+>   defsubr (&Sfile_size);
+============================= ./src/x11term.c
+87d86
+< #include <sys/time.h>
